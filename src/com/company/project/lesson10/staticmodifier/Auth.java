@@ -1,6 +1,6 @@
 package com.company.project.lesson10.staticmodifier;
 
-public interface Auth {
+public sealed interface Auth /* extends Runnable */ permits GAuth, AppAuth {
     boolean login(String username, String password);
     boolean logout();
 

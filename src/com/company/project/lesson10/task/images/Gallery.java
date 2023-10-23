@@ -22,4 +22,19 @@ public class Gallery implements Drawable {
         }
     }
 
+    @Override
+    public Drawable clone() {
+        try {
+            Gallery galleryCopy = (Gallery) super.clone();
+            Drawable[] drawablesCopy = new Drawable[drawables.length];
+            for (int i = 0; i < drawablesCopy.length; i++) {
+                drawablesCopy[i] = drawables[i].clone();
+            }
+            galleryCopy.drawables = drawablesCopy;
+            return galleryCopy;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

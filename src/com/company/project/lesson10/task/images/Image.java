@@ -17,4 +17,13 @@ public class Image implements Drawable {
         System.out.println(path);
     }
 
+    @Override
+    public Drawable clone() {
+        try {
+            return (Drawable) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

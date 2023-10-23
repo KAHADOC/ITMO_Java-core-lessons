@@ -1,6 +1,6 @@
 package com.company.project.lesson10.staticmodifier;
 
-public class GAuth implements Auth{
+public final class GAuth implements Auth, Runnable{
 
     @Override
     public boolean login(String username, String password) {
@@ -10,5 +10,10 @@ public class GAuth implements Auth{
     @Override
     public boolean logout() {
         return false;
+    }
+
+    @Override
+    public void run() {
+
     }
 }

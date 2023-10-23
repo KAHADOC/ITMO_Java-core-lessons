@@ -1,7 +1,7 @@
 package com.company.project.lesson10.staticmodifier;
 
 //
-public class Messages {
+public final class Messages {
     private Messages(){}
 
     // Messages.SUCCESS_MESSAGE

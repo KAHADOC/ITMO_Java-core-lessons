@@ -19,4 +19,5 @@ abstract public class Animal {
     public void setAge(double age) {
         this.age = age;
     }
+
 }
