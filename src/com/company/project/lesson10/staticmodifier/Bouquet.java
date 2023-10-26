@@ -4,15 +4,15 @@ public class Bouquet {
     public int numberOfFlowers;
     public String type;
 
-    // не являются свойствами объектов
+    // РЅРµ СЏРІР»СЏСЋС‚СЃСЏ СЃРІРѕР№СЃС‚РІР°РјРё РѕР±СЉРµРєС‚РѕРІ
     public static int numberOfFlowersStatic;
     public static String typeStatic;
 
-    static { // static блок
-        // инструкции выполняются один раз при загрузке класса
-        // в программу
-        // используется для инициализации static свойств,
-        // возможен вызов static методов
+    static { // static Р±Р»РѕРє
+        // РёРЅСЃС‚СЂСѓРєС†РёРё РІС‹РїРѕР»РЅСЏСЋС‚СЃСЏ РѕРґРёРЅ СЂР°Р· РїСЂРё Р·Р°РіСЂСѓР·РєРµ РєР»Р°СЃСЃР°
+        // РІ РїСЂРѕРіСЂР°РјРјСѓ
+        // РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё static СЃРІРѕР№СЃС‚РІ,
+        // РІРѕР·РјРѕР¶РµРЅ РІС‹Р·РѕРІ static РјРµС‚РѕРґРѕРІ
         typeStatic = getType();
     }
 
@@ -22,19 +22,19 @@ public class Bouquet {
         return priceWithStatic;
     }
 
-    // не определяют функционал объектов
-    public /* final по умолчанию */ static double getPriceStatic(){
-        // из static методов нельзя:
-        // 1. обращаться к не static свойствам
-        // 2. вызывать не static методы
-        // double price = Math.random() * 300 * this.numberOfFlowers; - ошибка
-        // double price = getPrice(); - ошибка
+    // РЅРµ РѕРїСЂРµРґРµР»СЏСЋС‚ С„СѓРЅРєС†РёРѕРЅР°Р» РѕР±СЉРµРєС‚РѕРІ
+    public /* final РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ */ static double getPriceStatic(){
+        // РёР· static РјРµС‚РѕРґРѕРІ РЅРµР»СЊР·СЏ:
+        // 1. РѕР±СЂР°С‰Р°С‚СЊСЃСЏ Рє РЅРµ static СЃРІРѕР№СЃС‚РІР°Рј
+        // 2. РІС‹Р·С‹РІР°С‚СЊ РЅРµ static РјРµС‚РѕРґС‹
+        // double price = Math.random() * 300 * this.numberOfFlowers; - РѕС€РёР±РєР°
+        // double price = getPrice(); - РѕС€РёР±РєР°
         double priceWithStatic = Math.random() * 300 * numberOfFlowersStatic;
         return priceWithStatic;
     }
 
     private static String getType(){
-        String[] types = {"Круглый", "Каскадный", "Спиральный"};
+        String[] types = {"РљСЂСѓРіР»С‹Р№", "РљР°СЃРєР°РґРЅС‹Р№", "РЎРїРёСЂР°Р»СЊРЅС‹Р№"};
         return types[(int) (Math.random()*types.length)];
     }
 

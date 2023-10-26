@@ -10,19 +10,19 @@ import java.util.Scanner;
 public class Lesson10 {
 
     public static void main(String[] args) {
-        Item item01 = new Item("Карандаш", 320);
-        Item item02 = new Item("Карандаш", 320);
+        Item item01 = new Item("РљР°СЂР°РЅРґР°С€", 320);
+        Item item02 = new Item("РљР°СЂР°РЅРґР°С€", 320);
         Item copyItem = item01.clone();
-        // toString() возвращает строковое представление объекта
-        // наследуется от класса Object
+        // toString() РІРѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°
+        // РЅР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ РєР»Р°СЃСЃР° Object
         System.out.println(item01.toString());
         System.out.println(item01 == item02); // false
-        // equals() используется для сравнения объектов
-        // наследуется от класса Object
-        // по умолчанию сравнивает ссылки
+        // equals() РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ РѕР±СЉРµРєС‚РѕРІ
+        // РЅР°СЃР»РµРґСѓРµС‚СЃСЏ РѕС‚ РєР»Р°СЃСЃР° Object
+        // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЃСЂР°РІРЅРёРІР°РµС‚ СЃСЃС‹Р»РєРё
         System.out.println(item01.equals(item02)); // true
 
-        // Item item03 = new Item("Ручка", 490);
+        // Item item03 = new Item("Р СѓС‡РєР°", 490);
         Order order01 = new Order(new Item[]{item01, item02});
         Order order02 = new Order(new Item[]{item01, item02});
         // order.getItems()[0] = item03;
@@ -30,13 +30,13 @@ public class Lesson10 {
         System.out.println(copy == order01); // false
         System.out.println(copy.getItems() == order01.getItems()); // false
 
-        // Модификатор static
+        // РњРѕРґРёС„РёРєР°С‚РѕСЂ static
         Bouquet bouquet01 = new Bouquet();
-        bouquet01.type = "Спиральный";
+        bouquet01.type = "РЎРїРёСЂР°Р»СЊРЅС‹Р№";
         bouquet01.numberOfFlowers = 3;
 
         Bouquet bouquet02 = new Bouquet();
-        bouquet02.type = "Каскадный";
+        bouquet02.type = "РљР°СЃРєР°РґРЅС‹Р№";
         bouquet02.numberOfFlowers = 5;
 
         System.out.println(bouquet02);
@@ -54,13 +54,13 @@ public class Lesson10 {
 
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Имя пользователя");
+        System.out.println("РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ");
         String username = scanner.nextLine();
 
-        System.out.println("Пароль");
+        System.out.println("РџР°СЂРѕР»СЊ");
         String password = scanner.nextLine();
 
-        System.out.println("Способ авторизации");
+        System.out.println("РЎРїРѕСЃРѕР± Р°РІС‚РѕСЂРёР·Р°С†РёРё");
         String authType = scanner.nextLine(); // github, app
         Auth auth = Auth.getAuth(authType);
 
