@@ -3,8 +3,21 @@ package com.company.project.lesson14.properties;
 import com.company.project.lesson14.properties.service.Service;
 import com.company.project.lesson14.properties.vehicle.*;
 
+import java.util.LinkedList;
+
 public class GenericProperties {
     public static void main(String[] args) {
+        User<String> stringUser = new User<>("34rr");
+        stringUser.setId(stringUser.getId().toLowerCase());
+
+        User<Integer> integerUser = new User<>(1);
+        integerUser.setId(integerUser.getId() + 1);
+
+        // необработанный / сырой / raw тип
+        User rawUser = new User("12");
+        rawUser.setId(12);
+        rawUser.setId(stringUser);
+        System.out.println(rawUser.getId().toString());
 
         // Типизированные свойства с ограничениями
         Train train01 = new Train("train01", 7, false);

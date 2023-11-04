@@ -16,9 +16,16 @@ public class WildCard {
     // <?> - может быть все, что угодно
 
 
+    // Vehicle v = new Train();
+    // Service<MiniCar> mini = new Service();
+    // Service<MiniCar02> mini02 = new Service();
+    // toBetterService(mini02)
     // The Get and Put Principle или PECS (Producer ? Extends - Consumer ? Super)
-    public static void toBetterService(Service<? extends Car> producerService, Service<? super Car> consumerService) {
+    public static void toBetterService(Service<? extends Car> producerService,
+                                       Service<? super Car> consumerService) {
         Car carFromService = producerService.getElement();
+        // Object obj = consumerService.getElement();
+
         if (carFromService.getColor() == Repaintable.Color.ORANGE ||
                 carFromService.getColor() == Repaintable.Color.GOLD){
             consumerService.setElement(carFromService);
@@ -57,14 +64,27 @@ public class WildCard {
         service.startRepair(); // <?> используется если тип, хранимых в контейнере данных не важен
         // можно добавить только null, прочитать только Object
     }
-    public static void main(String[] args) {
-        // WILDCARDS
 
-        // Ковариантность - сохранение иерархии наследования исходных типов
+    public static void v(Vehicle vehicle) {}
+    public static void v(Vehicle[] vehicles) {}
+    public static void v(Service<Vehicle> service) {}
+
+    public static void main(String[] args) {
+
+        // public static void v(Vehicle vehicle) {}
+        Car car = new Car(Repaintable.Color.BLACK, "0000");
+        v(car); // Vehicle vehicle = car;
+
+        // Ковариантность - сохранение иерархии наследования
+        // исходных типов
         // в производных типах в том же порядке, т.е.
-        // если Car - подтип Vehicle, то Service<Car> - подтип Service<Car>.
+        // если Car - подтип Vehicle,
+        // то Service<Car> - подтип Service<Car>.
         // И можно выполнить присваивание:
+
         Car[] cars = new Car[10]; // массивы ковариантны
+        // public static void v(Vehicle[] vehicles) {}
+        v(cars); // Vehicle[] vehicles = cars;
         Vehicle[] vehicles = cars;
         vehicles[0] = new Car(Repaintable.Color.BLACK, "0000");
         // -> ArrayStoreException - при попытке добавить неправильный тип объекта в массив
@@ -74,22 +94,27 @@ public class WildCard {
         // если Car - подтип Vehicle, то Service<Car> - не подтип MiniService<Car> и наоборот.
 
         Service<Car> cars01 = new Service<>(); // generic инвариантны
-        // Service<Vehicle> vehicles01 = cars01; // ПОЧЕМУ КОМПИЛЯТОР НЕ ПОЗВОЛИТ так присвоить ссылку ???
+        // public static void v(Service<Vehicle> service) {}
+        // v(cars01); // Service<Vehicle> vehicles01 = cars01; // ПОЧЕМУ КОМПИЛЯТОР НЕ ПОЗВОЛИТ так присвоить ссылку ???
 
-        // Контравариантность - изменение иерархии исходных типов на противоположную в производных типах.
-        // если Car - подтип Vehicle, то Service<Vehicle> - подтип Service<Car>.
+
+        // Контравариантность - изменение иерархии исходных типов
+        // на противоположную в производных типах.
+        // если Car - подтип Vehicle,
+        // то Service<Vehicle> - подтип Service<Car>.
         // И можно выполнить присваивание:
         Service<Vehicle> vehicles02 = new Service<>();
         // Service<Car> cars02 = vehicles02; // ПОЧЕМУ КОМПИЛЯТОР НЕ ПОЗВОЛИТ так присвоить ссылку ???
 
         // ковариантность в generic
         Service<Car> cars03 = new Service<>();
+        // ограничение сверху
         Service<? extends Vehicle> vehicles03 = cars03; // ПОЧЕМУ КОМПИЛЯТОР ПОЗВОЛИТ так присвоить ссылку ???
 
         // контрвариантность в generic
         Service<Vehicle> vehicle04 = new Service<>();
+        // ограничение снизу
         Service<? super Car> cars04 = vehicle04; // ПОЧЕМУ КОМПИЛЯТОР ПОЗВОЛИТ так присвоить ссылку ???
-
 
         // Используются для передачи generic контейнеров в методы
 
@@ -104,6 +129,7 @@ public class WildCard {
         // Service<? super Car> consumerService --- Car и супертипы
         toBetterService(carService, objectService);
         toBetterService(miniCarService, carService);
+        toBetterService(miniCarService, vehicleService);
         // toBetterService(miniCarService, runnableService);
         // toBetterService(vehicleService, objectService);
 
