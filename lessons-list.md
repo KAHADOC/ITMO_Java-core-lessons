@@ -98,3 +98,34 @@
 3. Принципы ООП, SOLID
 
 [Код](src/com/company/project/lesson12)<br>
+
+## Занятие #13.
+1. Классы-обёртки над примитивными типами
+2. Модель памяти
+3. Загрузка классов
+
+[Код](src/com/company/project/lesson13)<br>
+
+## Занятие #14.
+1. Generic типы
+
+[Код](src/com/company/project/lesson14)<br>
+[Домашнее задание](src/com/company/project/lesson14/task)
+
+## Занятие #15/16.
+1. Коллекции
+
+[Код](src/com/company/project/lesson1516)<br>
+[Домашнее задание](src/com/company/project/lesson1516/task)
+
+## Занятие #17.
+1. Map
+
+[Код](src/com/company/project/lesson17)<br>
+[Домашнее задание](src/com/company/project/lesson17/task)
+
+
+
+## Книги по алгоритмам:
+1. Кормен Томас , Лейзерсон Чарльз , Ривест Рональд , Штайн Клиффорд. ***Алгоритмы. Построение и анализ***
+2. Скиена Стивен. ***Алгоритмы. Руководство по разработке***
