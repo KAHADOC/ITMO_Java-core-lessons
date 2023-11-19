@@ -130,15 +130,51 @@ public class StreamApi19 {
                 new Car(Repaintable.Color.BLACK, "006"),
                 new MiniCar(Repaintable.Color.ORANGE, "007")
         );
+        // void accept(T t);
+        // R apply(T t);
+        vehicles.stream()
+                .peek(vehicle -> vehicle.repair()) // промежуточная
+                .map/*ToInt*/(vehicle -> {
+                    vehicle.repair();
+                    return vehicle.getLevelOfWare();
+                })
+                .forEach(integer -> System.out.print(integer)); // терминальная
 
         // преобразование stream в массив
         Object[] objectsArr = vehicles.stream().toArray();
         Vehicle[] vehiclesArr = vehicles.stream()
-                .toArray(Vehicle[]::new); // ссылка на конструктор массива типа FVehicleruit
+                .toArray(Vehicle[]::new); // ссылка на конструктор массива типа Vehicle
         // .toArray(size -> new Vehicle[size]); без ссылки на конструктор
 
         // преобразование stream в список
         List<Vehicle> vehiclesList = vehicles.stream()
                 .toList(); // unmodifiableList
+
+        List<String> sortedVehicles = vehicles.stream()
+                .sorted((o1, o2) -> o2.getLevelOfWare() - o1.getLevelOfWare())
+                // .sorted() // Vehicle должен имплементировать Comparable
+                .map(vehicle -> vehicle.getNumber()).toList();
+
+        int sumLevelOfWare = vehicles.stream()
+                .mapToInt(vehicle -> vehicle.getLevelOfWare())
+                .sum();
+
+        /*vehicles.stream()
+                .peek(vehicle -> vehicle.changeColor(Repaintable.Color.GOLD))
+                .forEach(System.out::println);*/
+
+        // Optional<Vehicle>
+        // vehicles.stream().findFirst();
+        // vehicles.stream().parallel().map().findAny();
+
+        // vehicles.stream().min((o1, o2) -> o1.getLevelOfWare() - o2.getLevelOfWare());
+        // vehicles.stream().max((o1, o2) -> o1.getLevelOfWare() - o2.getLevelOfWare());
+
+        // true / false
+        // vehicles.stream().allMatch(vehicle -> vehicle.getLevelOfWare() > 100);
+        // vehicles.stream().anyMatch(vehicle -> vehicle.getLevelOfWare() > 100);
+        // vehicles.stream().noneMatch(vehicle -> vehicle.getLevelOfWare() > 100);
+
+        // vehicles.stream().collect(); Collectors
     }
 }
